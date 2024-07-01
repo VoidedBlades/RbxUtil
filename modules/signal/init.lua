@@ -331,7 +331,7 @@ function Signal:Fire(...)
 			if not freeRunnerThread then
 				freeRunnerThread = coroutine.create(runEventHandlerInFreeThread)
 			end
-			task.spawn(freeRunnerThread, item._fn, ...)
+			coroutine.resume(freeRunnerThread, item._fn, ...)
 		end
 		item = item._next
 	end
